@@ -1,38 +1,33 @@
-import { createRoot } from "react-dom/client";
-import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Contact from "./components/Contact";
-import Home from "./components/Home";
-import Header from "./components/Header";
-import ErrorPage from "./components/ErrorPage";
-import CountryDetail from "./components/CountryDetail";
+import { createRoot } from 'react-dom/client'
+import App from './App'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Contact from './components/Contact'
+import Home from './components/Home'
+import Error from './components/Error'
+import CountryDetail from './components/CountryDetail'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
-    errorElement: <ErrorPage />,
+    errorElement: <Error />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
-
       {
-        path: "/:country",
+        path: '/:country',
         element: <CountryDetail />,
       },
       {
-        path: "/contact",
+        path: '/contact',
         element: <Contact />,
       },
     ],
   },
-]);
-const root = createRoot(document.querySelector("#root"));
+])
 
-root.render(
-  <>
-    <RouterProvider router={router} />
-  </>
-);
+const root = createRoot(document.querySelector('#root'))
+
+root.render(<RouterProvider router={router} />)

@@ -1,22 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function CountryCard({
   name,
   flag,
   population,
   region,
-  capitial,
+  capital,
   data,
 }) {
   return (
-    <Link className="country-card" to={`/${name}`} state={{ data }}>
-      <img src={flag} alt={name + "Flag"} />
+    <Link className="country-card" to={`/${name}`} state={data}>
+      <div className='flag-container'>
+        <img src={flag} alt={name + ' Flag'} />
+      </div>
       <div className="card-text">
         <h3 className="card-title">{name}</h3>
         <p>
           <b>Population: </b>
-          {population}
+          {population.toLocaleString('en-IN')}
         </p>
         <p>
           <b>Region: </b>
@@ -24,9 +26,9 @@ export default function CountryCard({
         </p>
         <p>
           <b>Capital: </b>
-          {capitial}
+          {capital}
         </p>
       </div>
     </Link>
-  );
+  )
 }
